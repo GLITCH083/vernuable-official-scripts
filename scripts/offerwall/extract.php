@@ -4,10 +4,11 @@
  * Run once: php extract.php
  */
 $dir = __DIR__;
-$parts = ["$dir/bot.part1.b64", "$dir/bot.part2.b64"];
+$parts = glob("$dir/bot.part*.b64");
+sort($parts);
+if (count($parts) < 1) { fwrite(STDERR, "No bot.part*.b64\n"); exit(1); }
 $b64 = "";
 foreach ($parts as $p) {
-    if (!is_file($p)) { fwrite(STDERR, "Missing $p\n"); exit(1); }
     $b64 .= preg_replace('/\s+/', '', file_get_contents($p));
 }
 $data = gzdecode(base64_decode($b64));
