@@ -2,19 +2,19 @@
 /**
  * Vernuable Official Scripts · v0.0.0
  * Run once: php extract.php
- * Extracts bitcotasks.com.php into this folder.
  */
-$b64File = __DIR__ . "/bitcotasks.com.php.b64.gz";
-if (!is_file($b64File)) {
-    fwrite(STDERR, "Missing bitcotasks.com.php.b64.gz\n");
-    exit(1);
+$dir = __DIR__;
+$parts = ["$dir/bot.part1.b64", "$dir/bot.part2.b64"];
+$b64 = "";
+foreach ($parts as $p) {
+    if (!is_file($p)) { fwrite(STDERR, "Missing $p\n"); exit(1); }
+    $b64 .= preg_replace('/\s+/', '', file_get_contents($p));
 }
-$raw = file_get_contents($b64File);
-$data = gzdecode(base64_decode(preg_replace('/\s+/', '', $raw)));
+$data = gzdecode(base64_decode($b64));
 if ($data === false || $data === "") {
     fwrite(STDERR, "Decode failed\n");
     exit(1);
 }
-$out = __DIR__ . "/bitcotasks.com.php";
+$out = "$dir/bitcotasks.com.php";
 file_put_contents($out, $data);
 echo "OK v0.0.0 — wrote " . strlen($data) . " bytes → $out\n";
