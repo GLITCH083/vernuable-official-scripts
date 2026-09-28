@@ -1,0 +1,13 @@
+{
+  "version": "0.0.0",
+  "name": "VernuableOfficialScripts",
+  "whats_new": [
+    "HAR-accurate BitcoTasks captcha (dynamic ctoken)",
+    "Full A-Z captcha retry on fail",
+    "Single claim box SUCCESS log",
+    "No base64 parts — plain PHP scripts",
+    "Main bot.php launcher + functions/"
+  ],
+  "updated": "2026-09-29",
+  "repo": "GLITCH083/vernuable-official-scripts"
+}

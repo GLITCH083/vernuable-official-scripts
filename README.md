@@ -2,36 +2,31 @@
 
 **Version:** `0.0.0`
 
-Official offerwall scripts powered by [Vernuable](https://vernuable.my.id).
+## Structure
 
-## BitcoTasks.com PTC Bot
+```
+bot.php                          ← MAIN launcher (run this)
+version.json
+functions/
+  function.php                   ← colors, theme, configPath, saveData
+  vernuable.php                  ← Vernuable API (balance + bitcotask solve)
+scripts/
+  offerwall/
+    bitcotasks.com.php           ← BitcoTasks PTC bot
+configs/                         ← auto-created (API key, accounts)
+```
 
-HAR-accurate PHP bot (motion captcha, dynamic `ctoken`, multi-account).
-
-### Install
+## Run
 
 ```bash
 git clone https://github.com/GLITCH083/vernuable-official-scripts.git
-cd vernuable-official-scripts/scripts/offerwall
-php extract.php
-php bitcotasks.com.php
+cd vernuable-official-scripts
+php bot.php
 ```
 
-### Files
+Then: **[1] Offerwall** → **bitcotasks.com.php**
 
-| File | Purpose |
-|------|---------|
-| `extract.php` | Decodes bot into `bitcotasks.com.php` |
-| `bot.part1.b64` / `bot.part2.b64` | Compressed bot payload |
-| `bitcotasks.com.php` | Main bot (after extract) |
+## Requirements
 
-### Requirements
-
-- PHP 7.4+ (`curl`, `json`, `zlib`)
-- Vernuable API key
-
-### Public URL
-
-https://github.com/GLITCH083/vernuable-official-scripts
-
-**Legacy:** https://github.com/GLITCH083/bitcotask-bot
+- PHP 7.4+ with `curl`, `json`
+- Vernuable API key (https://vernuable.my.id)
